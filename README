@@ -7,28 +7,32 @@ Requirements
 ------------
 In order to build st you need the Xlib header files.
 
+Patches - Branches
+------------------
 
-Installation
-------------
-Edit config.mk to match your local setup (st is installed into
-the /usr/local namespace by default).
+bold-is-not-bright
+config
+dracula
+gruvbox
+scrollback + ligatures
 
-Afterwards enter the following command to build and install st (if
-necessary as root):
+Usage
+-----
 
-    make clean install
+To add a new patch first clean the master with this command:
+    
+    make clean && rm -f config.h && git reset --hard origin/master
 
+Then create the branch and switch to the new branch:
 
-Running st
-----------
-If you did not install st with make clean install, you must compile
-the st terminfo entry with the following command:
+    git branch newbranch
+    git checkout newbranch
 
-    tic -sx st.info
+Then apply the patch you want to add:
 
-See the man page for additional details.
+    git apply dir/to/the/patch/file
 
-Credits
--------
-Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
+Make the commit and switch to master, then merge the branch:
+
+    git merge newbranch -m "Newbranch"
 
