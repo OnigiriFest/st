@@ -15,6 +15,7 @@ config
 dracula
 gruvbox
 scrollback + ligatures
+w3m - Support for images rendering in the terminal
 
 Usage
 -----
